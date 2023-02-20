@@ -10,6 +10,33 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:Label ID="lblStaffNo" runat="server" Text="Staff Number"></asp:Label>
+        <asp:TextBox ID="txtStaffNo" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblStaffName" runat="server" Text="Staff Name"></asp:Label>
+        <asp:TextBox ID="txtStaffName" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblStaffAddress" runat="server" Text="Staff Address"></asp:Label>
+        <asp:TextBox ID="txtStaffAddress" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblStaffMoNumber" runat="server" Text="Staff Mobile Number"></asp:Label>
+        <asp:TextBox ID="txtStaffMoNumber" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblStaffRole" runat="server" Text="Staff Role"></asp:Label>
+        <asp:TextBox ID="txtStaffRole" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblStaffBirthDate" runat="server" Text="Staff Birth Date"></asp:Label>
+        <asp:TextBox ID="txtStaffBirthDate" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Label ID="Label1" runat="server" Text="Boolean coming soon..."></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="lblError" runat="server"></asp:Label>
+        <br />
+        <br />
+        <asp:Button ID="btnOK" runat="server" Text="Ok" />
+        <asp:Button ID="btnCancel" runat="server" Text="Button" />
     </form>
 </body>
 </html>
