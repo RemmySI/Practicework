@@ -11,21 +11,21 @@
         <div>
         </div>
         <asp:Label ID="lblStaffNo" runat="server" Text="Staff Number"></asp:Label>
-        <asp:TextBox ID="txtStaffNo" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtStaffNo" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="lblStaffName" runat="server" Text="Staff Name"></asp:Label>
+        <asp:Label ID="lblStaffName" runat="server" Text="Staff Name" width="82px"></asp:Label>
         <asp:TextBox ID="txtStaffName" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="lblStaffAddress" runat="server" Text="Staff Address"></asp:Label>
+        <asp:Label ID="lblStaffAddress" runat="server" Text="Staff Address" width="82px"></asp:Label>
         <asp:TextBox ID="txtStaffAddress" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="lblStaffMoNumber" runat="server" Text="Staff Mobile Number"></asp:Label>
+        <asp:Label ID="lblStaffMoNumber" runat="server" Text="Staff Mobile Number" width="82px"></asp:Label>
         <asp:TextBox ID="txtStaffMoNumber" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="lblStaffRole" runat="server" Text="Staff Role"></asp:Label>
+        <asp:Label ID="lblStaffRole" runat="server" Text="Staff Role" width="82px"></asp:Label>
         <asp:TextBox ID="txtStaffRole" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="lblStaffBirthDate" runat="server" Text="Staff Birth Date"></asp:Label>
+        <asp:Label ID="lblStaffBirthDate" runat="server" Text="Staff Birth Date" width="82px"></asp:Label>
         <asp:TextBox ID="txtStaffBirthDate" runat="server"></asp:TextBox>
         <br />
         <br />
@@ -35,7 +35,7 @@
         <asp:Label ID="lblError" runat="server"></asp:Label>
         <br />
         <br />
-        <asp:Button ID="btnOK" runat="server" Text="Ok" />
+        <asp:Button ID="btnOK" runat="server" Text="Ok" OnClick="btnOK_Click" />
         <asp:Button ID="btnCancel" runat="server" Text="Button" />
     </form>
 </body>
