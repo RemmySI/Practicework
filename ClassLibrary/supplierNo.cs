@@ -1,6 +1,8 @@
-﻿namespace Testing5
+﻿using System;
+
+namespace ClassLibrary
 {
-    internal class supplierNo
+    public class supplierNo
     {
         public string supplierName;
         public decimal supplierContactNo { get; set; }
