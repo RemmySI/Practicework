@@ -1,0 +1,6 @@
+﻿class clsCustomer
+{
+    public clsCustomer()
+    {
+    }
+}
