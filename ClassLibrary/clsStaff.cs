@@ -105,15 +105,37 @@ namespace ClassLibrary
 
         public bool Find(int staffNo)
         {
-            mStaffNo = 21;
-            mStaffActive = true;
-            mStaffAddress = "Knight Avenue 2";
-            mStaffBirthDate = DateTime.Now.Date;
-            mStaffMoNumber = 7415687415;
-            mStaffName = "Will Smith";
-            mStaffRole = "Analyst";
-            //always return true
-            return true;
+            //Create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //Add the parameter for the staff no to search for
+            DB.addParameter("@staffNo", staffNo);
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_FilterByStaffNo");
+
+            //If one record is found (There should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //Copy the data from the database to the private data members
+                mStaffNo = Convert.ToInt32(DB.DataTable.Rows[0]["staffNo"]);
+                mStaffAddress = Convert.ToString(DB.DataTable.Rows[0]["staffAddress"]);
+                mStaffActive = Convert.ToBoolean(DB.DataTable.Rows[0]["staffActive"]);
+                mStaffBirthDate = Convert.ToDateTime(DB.DataTable.Rows[0]["staffBirthDate"]);
+                mStaffMoNumber = Convert.ToDecimal(DB.DataTable.Rows[0]["staffMoNumber"]);
+                mStaffName = Convert.ToString(DB.DataTable.Rows[0]["staffName"]);
+                mStaffRole = Convert.ToString(DB.DataTable.Rows[0]["staffRole"]);
+
+                //Return that everything worked OK
+                return true;
+            }
+
+            //If no record was found
+            else
+            {
+                //Return false indicating a problem
+                return false;
+            }
         }
 
     }
