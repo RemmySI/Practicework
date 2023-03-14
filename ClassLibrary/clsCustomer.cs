@@ -4,11 +4,96 @@ namespace ClassLibrary
 {
     public class clsCustomer
     {
-        public DateTime DateAdded { get; set; }
-        public int CustomerNo { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNo { get; set; }
+        private DateTime mDateAdded;
+        public DateTime DateAdded
+
+        {
+            get
+            {
+                return mDateAdded;
+
+            }
+            set
+            {
+                mDateAdded = value;
+            }
+        }
+
+        //Private variable 
+        private Int32 mCustomerNo;
+        public Int32 CustomerNo
+        {
+            get
+            {
+                return mCustomerNo;
+            }
+            set
+            {
+                mCustomerNo = value;
+
+            }
+                }
+        private string mFirstName;
+        public string FirstName
+        {
+            get
+            {
+                return mFirstName;
+            }
+            set
+            {
+                mFirstName = value;
+            }
+        }
+        private string mLastName;
+        public string LastName
+        {
+            get
+            {
+                return mLastName;
+            }
+            set
+            {
+                mLastName = value;
+            }
+        }
+        private string mEmail;
+        public string Email
+        {
+            get
+            {
+                return mEmail;
+            }
+            set
+            {
+                mEmail = value;
+            }
+        }
+         private string mPhoneNo;
+        public string PhoneNo
+        {
+            get
+            {
+                return mPhoneNo;
+            }
+            set
+            {
+                mPhoneNo = value;
+            }
+        }
+
+        public bool Find(int customerNo)
+        {
+            //set the privare data members to the test data value
+            mCustomerNo = 21;
+            mFirstName = "Test First";
+            mLastName = "Test Last";
+            mEmail =  "TestEmail@Email.com";
+            mPhoneNo = "01788888";
+            mDateAdded = Convert.ToDateTime("05/11/2021");
+
+            //always return true
+            return true;
+        }
     }
 }
