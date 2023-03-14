@@ -11,12 +11,12 @@ public partial class _1Viewer : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //Create new instance
-        staffNo AnStaffNo = new staffNo();
+        clsStaff clsStaff = new clsStaff();
 
         //Get data from the session object
-        AnStaffNo = (staffNo)Session["AnStaffNo"];
+        clsStaff staffNo = (clsStaff)Session["AnStaffNo"];
 
         //display the name
-        Response.Write(AnStaffNo.staffName);
+        Response.Write(staffNo.staffName);
     }
 }

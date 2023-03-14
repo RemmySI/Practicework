@@ -29,7 +29,7 @@
         <asp:TextBox ID="txtStaffBirthDate" runat="server"></asp:TextBox>
         <br />
         <br />
-        <asp:Label ID="Label1" runat="server" Text="Boolean coming soon..."></asp:Label>
+        <asp:CheckBox ID="chkActive" runat="server" Text="Active" />
         <br />
         <br />
         <asp:Label ID="lblError" runat="server"></asp:Label>

@@ -11,7 +11,7 @@ namespace Testing3
         public void StaffNumberOK()
         {
             //Creating instance of a class 
-            staffNo staffNumber = new staffNo();
+            clsStaff staffNumber = new clsStaff();
 
             //test to see that it exists
             Assert.IsNotNull(staffNumber);
@@ -21,7 +21,7 @@ namespace Testing3
         public void StaffNameOK()
         {
             //New instance creation
-            staffNo staffNumber = new staffNo();
+            clsStaff staffNumber = new clsStaff();
 
             //Test data creation
             string TestData = "Will Smith";
@@ -37,7 +37,7 @@ namespace Testing3
         public void StaffAddressOK()
         {
             //New instance
-            staffNo staffNumber = new staffNo();
+            clsStaff staffNumber = new clsStaff();
 
             //Test data creation
             string TestData = "Knight Avenue 2";
@@ -53,7 +53,7 @@ namespace Testing3
         public void staffMoNumberOK()
         {
             //New instance
-            staffNo staffNumber = new staffNo();
+            clsStaff staffNumber = new clsStaff();
 
             //Test data creation
             decimal TestData = 7415687415;
@@ -69,7 +69,7 @@ namespace Testing3
         public void staffRoleOK()
         {
             //New instance
-            staffNo staffNumber = new staffNo();
+            clsStaff staffNumber = new clsStaff();
 
             //Test data creation
             string TestData = "Analyst";
@@ -85,7 +85,7 @@ namespace Testing3
         public void staffBirthDateOK()
         {
             //New instance
-            staffNo staffNumber = new staffNo();
+            clsStaff staffNumber = new clsStaff();
 
             //Test data creation
             DateTime TestData = DateTime.Now.Date;
@@ -94,7 +94,71 @@ namespace Testing3
             staffNumber.staffBirthDate = TestData;
 
             //Compare the two value
-            Assert.AreEqual(staffNumber.staffBirthDate, TestData);
+            Assert.AreEqual(staffNumber.staffBirthDate,
+                            TestData);
+        }
+
+        [TestMethod]
+        public void staffActiveOK()
+        {
+            //Create new instance
+            clsStaff staffNumber = new clsStaff();
+
+            //Create test data
+            Boolean TestData = true;
+
+            //Assign data to the property
+            staffNumber.staffActive = TestData;
+
+            //Compare the two value
+            Assert.AreEqual(staffNumber.staffActive, TestData);
+        }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //Create new instance
+            clsStaff staffNumber = new clsStaff();
+
+            //Boolean var to store the results
+            Boolean Found = false;
+
+            //Create test data
+            Int32 staffNo = 21;
+
+            //invoke the method
+            Found = staffNumber.Find(staffNo);
+
+            //Test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestStaffNotFound()
+        {
+            //Create an instance of the class
+            clsStaff staffNumber = new clsStaff();
+
+            //Boolean to store the result
+            Boolean Found = false;
+
+            //Boolean variable to record if data is OK
+            Boolean OK = true;
+
+            //create test data
+            Int32 staffNo = 21;
+
+            //Invoke the method
+            Found = staffNumber.Find(staffNo);
+
+            //Check the staff number
+            if (staffNumber.staffNo != 21)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
         }
     }
 }
