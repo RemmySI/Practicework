@@ -28,15 +28,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStock
         clsStock AnStock = new clsStock();
         //capture the stock no
-        AnStock.CardNo = txtCardNo.Text;
+        AnStock.CardNo = Convert.ToInt32(txtCardNo.Text);
         //store the stock in the session object
         Session["AnStock"] = AnStock;
         //navigate to the viewer page
         Response.Redirect("StockViewer.aspx");
     }
 
-    protected void txtCardNo_TextChanged(object sender, EventArgs e)
-    {
-
-    }
 }

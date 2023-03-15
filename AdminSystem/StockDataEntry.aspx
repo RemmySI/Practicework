@@ -19,7 +19,7 @@
             <asp:Label ID="lblCardDescription" runat="server" style="z-index: 1; left: 10px; top: 80px; position: absolute" Text="Card Description"></asp:Label>
         </p>
         <asp:TextBox ID="txtCardDescription" runat="server" style="z-index: 1; left: 157px; top: 82px; position: absolute; height: 20px; width: 168px"></asp:TextBox>
-        <asp:TextBox ID="txtCardType" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; left: 156px; top: 120px; position: absolute; height: 20px" width="168px"></asp:TextBox>
+        <asp:TextBox ID="txtCardType" runat="server"  style="z-index: 1; left: 156px; top: 120px; position: absolute; height: 20px" width="168px"></asp:TextBox>
         <p>
             &nbsp;</p>
         <p>
