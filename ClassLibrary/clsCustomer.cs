@@ -32,7 +32,7 @@ namespace ClassLibrary
                 mCustomerNo = value;
 
             }
-                }
+        }
         private string mFirstName;
         public string FirstName
         {
@@ -69,7 +69,7 @@ namespace ClassLibrary
                 mEmail = value;
             }
         }
-         private string mPhoneNo;
+        private string mPhoneNo;
         public string PhoneNo
         {
             get
@@ -84,16 +84,29 @@ namespace ClassLibrary
 
         public bool Find(int customerNo)
         {
-            //set the privare data members to the test data value
-            mCustomerNo = 21;
-            mFirstName = "Test First";
-            mLastName = "Test Last";
-            mEmail =  "TestEmail@Email.com";
-            mPhoneNo = "01788888";
-            mDateAdded = Convert.ToDateTime("05/11/2021");
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerNo", CustomerNo);
+            DB.Execute("sproc_tblCustomer_FilterByCustomerNo");
+            if (DB.Count == 1)
 
-            //always return true
-            return true;
+
+            {
+                //set the privare data members to the test data value
+                mCustomerNo = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerNo"]);
+                mFirstName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFirstName"]);
+                mLastName = Convert.ToString(DB.DataTable.Rows[0]["CustomerLastName"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["EmailAddress"]);
+                mPhoneNo = Convert.ToString(DB.DataTable.Rows[0]["ContactNumber"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+
+                //always return true
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
         }
     }
 }
