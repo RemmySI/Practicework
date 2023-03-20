@@ -35,4 +35,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("StockViewer.aspx");
     }
 
+
+    protected void txtCardNo_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }

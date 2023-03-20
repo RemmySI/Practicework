@@ -12,7 +12,7 @@
         </div>
         <asp:Label ID="lblCardNo" runat="server" style="z-index: 1; left: 10px; top: 37px; position: absolute" Text="Card Number" width="137px"></asp:Label>
         <p>
-            <asp:TextBox ID="txtCardNo" runat="server" OnTextChanged="txtCardNo_TextChanged" style="z-index: 1; top: 40px; position: absolute; left: 158px; height: 20px; width: 168px; margin-bottom: 5px"></asp:TextBox>
+            <asp:TextBox ID="txtCardNo" runat="server" style="z-index: 1; top: 40px; position: absolute; left: 158px; height: 20px; width: 168px; margin-bottom: 5px"></asp:TextBox>
             <asp:Label ID="lblCardType" runat="server" style="z-index: 1; left: 11px; top: 118px; position: absolute" Text="Card Type" width="137px"></asp:Label>
         </p>
         <p>
