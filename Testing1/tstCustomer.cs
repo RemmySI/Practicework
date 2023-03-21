@@ -58,6 +58,7 @@ namespace Testing1
             ACustomer.Email = TestData;
             Assert.AreEqual(ACustomer.Email, TestData);
         }
+
         [TestMethod]
         public void CustomerPhoneNoOK()
         {
@@ -65,7 +66,7 @@ namespace Testing1
             string TestData = "2151254207";
             ACustomer.PhoneNo = TestData;
             Assert.AreEqual(ACustomer.PhoneNo, TestData);
-        } 
+        }
         [TestMethod]
         public void FindMethodOK()
         {
@@ -164,6 +165,21 @@ namespace Testing1
             Int32 CustomerNo = 21;
             Found = ACustomer.Find(CustomerNo);
             if (ACustomer.PhoneNo != "01788888")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAccountActive()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerNo = 21;
+            Found = ACustomer.Find(CustomerNo);
+            if (ACustomer.Active != true)
             {
                 OK = false;
             }

@@ -82,6 +82,19 @@ namespace ClassLibrary
             }
         }
 
+        private bool mActive;
+        public bool Active
+        {
+            get
+            {
+                return mActive;
+            }
+            set
+            {
+                mActive = value;
+            }
+        }
+
         public bool Find(int customerNo)
         {
             //set the privare data members to the test data value
@@ -91,6 +104,7 @@ namespace ClassLibrary
             mEmail =  "TestEmail@Email.com";
             mPhoneNo = "01788888";
             mDateAdded = Convert.ToDateTime("05/11/2021");
+            mActive = true;
 
             //always return true
             return true;
