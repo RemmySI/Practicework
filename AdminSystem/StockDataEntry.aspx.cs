@@ -29,6 +29,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AnStock = new clsStock();
         //capture the stock no
         AnStock.CardNo = Convert.ToInt32(txtCardNo.Text);
+        AnStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+
         //store the stock in the session object
         Session["AnStock"] = AnStock;
         //navigate to the viewer page
@@ -37,6 +39,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
     protected void txtCardNo_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtCardType_TextChanged(object sender, EventArgs e)
     {
 
     }
