@@ -29,7 +29,7 @@
         <asp:Label ID="lblDataAdded" runat="server" style="z-index: 1; left: 10px; top: 160px; position: absolute; margin-bottom: 0px" Text="Date Added" width="137px"></asp:Label>
         <asp:TextBox ID="txtDateAdded" runat="server" height="20px" style="z-index: 1; left: 155px; top: 155px; position: absolute" width="168px">05/06/09</asp:TextBox>
         <asp:Label ID="lblPrice" runat="server" style="z-index: 1; left: 12px; top: 194px; position: absolute" Text="Price" width="137px"></asp:Label>
-        <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 154px; top: 199px; position: absolute; height: 20px; width: 168px">110</asp:TextBox>
+        <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 154px; top: 199px; position: absolute; height: 20px; width: 168px" OnTextChanged="txtPrice_TextChanged">110</asp:TextBox>
         <asp:CheckBox ID="chkAvailable" runat="server" style="z-index: 1; left: 10px; top: 235px; position: absolute" Text="Available" />
         <p>
             <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 58px; top: 309px; position: absolute" Text="Cancel" />
