@@ -238,6 +238,63 @@ namespace Testing1
             //test comment
 
         }
+        [TestMethod]
+        public void FirstNameMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "a";
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreEqual(Error, "");// different from above test 
+
+        }
+        [TestMethod]
+        public void FirstNameMinPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "aa";
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void FirstNameMaxLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "aaaaa";
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void FirstNameMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "aaaaaa";
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void FirstNameMid()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "aaa";
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void FirstNameMaxPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "aaaaaaaa";
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreEqual(Error, "");
+        }
     }
 }
 
