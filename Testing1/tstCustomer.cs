@@ -221,6 +221,8 @@ namespace Testing1
             }
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
         public void FirstNameMinLessOne()
         {
             //instance of class being created
