@@ -139,9 +139,35 @@ namespace ClassLibrary
         }
 
         //Validation method
-        public string Valid (String staffNo, string staffName, string staffAddress, string staffMoNumber, string staffRole, string staffBirthDate, string staffActive)
+        public string Valid (string staffName, string staffAddress, string staffRole, string staffBirthDate)
         {
-            return "";
+            String Error = "";
+
+            DateTime DateTemp;
+
+            if (staffName.Length == 0 | staffAddress.Length == 0 | staffRole.Length == 0)
+            {
+                Error = Error + "This box may not be blank : ";
+            }
+
+            if (staffName.Length > 50 | staffAddress.Length > 50 | staffRole.Length > 50)
+            {
+                Error = Error + "This box must be less than 50 characters : ";
+            }
+
+            DateTemp = Convert.ToDateTime(staffBirthDate);
+            
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the past : ";
+            }
+
+            if (DateTemp > DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the future : ";
+            }
+            
+            return Error;
         }
     }
 }
