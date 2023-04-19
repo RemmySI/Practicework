@@ -41,9 +41,24 @@ namespace ClassLibrary
         {
             //string variable to store the error
             String Error = "";
+            DateTime DateTemp;
             if (firstName.Length == 0)
             {
                 Error = Error + "The first name may not be blank :";
+            }
+            //First Name must be less than 50 characater, can include string variable with middle name
+            if (firstName.Length > 50 )
+            {
+                Error = Error + "First names must be less then 50 characters : ";
+            }
+            DateTemp = Convert.ToDateTime(dateAdded);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be past in the past: ";
+            }
+            if (DateTemp > DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the future";
             }
             return Error;
         }

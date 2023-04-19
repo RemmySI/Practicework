@@ -295,6 +295,92 @@ namespace Testing1
             Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
             Assert.AreEqual(Error, "");
         }
+        [TestMethod]
+        public void FirstNameExtremeMax()
+        {
+            //instance of class
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store error message 
+            String Error = "";
+            //test data to pass method
+            string FirstName = "";
+            FirstName = FirstName.PadRight(500, 'a'); // this will cause a fail 
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            //a variable to store test date data
+            DateTime TestDate;
+            //date is todays date
+            TestDate = DateTime.Now.Date;
+            //The date minus 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert date to a string
+            string DateAdded = TestDate.ToString();
+            //invoke method
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string DateAdded = TestDate.ToString();
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreNotEqual(Error, "");
+
+
+        }
+        [TestMethod]
+        public void DateAddedMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DateAdded = TestDate.ToString();
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string DateAdded = TestDate.ToString();
+            Error = ACustomer.Valid(LastName, Email, PhoneNo, DateAdded, FirstName);
+            Assert.AreNotEqual(Error, "");
+
+        }
     }
 }
 
