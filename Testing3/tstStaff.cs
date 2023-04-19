@@ -2,11 +2,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
+
 namespace Testing3
-{
+  
     [TestClass]
     public class TstStaff
     {
+
+        string StaffNo = "5";
+        string StaffName = "Gabrielius Vaitkus";
+        string StaffAddress = "15 bridge meadow";
+        string StaffMoNumber = "7845123433";
+        string StaffRole = "Director";
+        string StaffBirthDate = DateTime.Now.Date.ToString();
+        string StaffActive = "True";
+        
         [TestMethod]
         public void StaffNumberOK()
         {
@@ -321,6 +331,14 @@ namespace Testing3
 
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            Error = staffNumber.Valid(staffNo, StaffName, StaffAddress, StaffMoNumber, StaffRole, StaffBirthDate, StaffActive);
         }
     }
 }
