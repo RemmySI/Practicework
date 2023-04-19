@@ -138,5 +138,10 @@ namespace ClassLibrary
             }
         }
 
+        //Validation method
+        public string Valid (String staffNo, string staffName, string staffAddress, string staffMoNumber, string staffRole, string staffBirthDate, string staffActive)
+        {
+            return "";
+        }
     }
 }
