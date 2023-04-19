@@ -124,7 +124,7 @@ namespace Testing3
             Boolean Found = false;
 
             //Create test data
-            Int32 staffNo = 21;
+            int staffNo = 2;
 
             //invoke the method
             Found = staffNumber.Find(staffNo);
@@ -134,7 +134,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void TestStaffNotFound()
+        public void TestStaffNoFound()
         {
             //Create an instance of the class
             clsStaff staffNumber = new clsStaff();
@@ -146,13 +146,175 @@ namespace Testing3
             Boolean OK = true;
 
             //create test data
-            Int32 staffNo = 21;
+            Int32 staffNo = 2;
 
             //Invoke the method
             Found = staffNumber.Find(staffNo);
 
             //Check the staff number
-            if (staffNumber.staffNo != 21)
+            if (staffNumber.staffNo != 2)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffNameFound()
+        {
+            clsStaff staffNumber = new clsStaff();
+
+            //Boolean to store the result
+            Boolean Found = false;
+
+            //Boolean variable to record if data is OK
+            Boolean OK = true;
+
+            //create test data
+            Int32 staffNo = 2;
+
+            //Invoke the method
+            Found = staffNumber.Find(staffNo);
+
+            //Check the staff number
+            if (staffNumber.staffName != "John Smith")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffAddressFound()
+        {
+            clsStaff staffNumber = new clsStaff();
+
+            //Boolean to store the result
+            Boolean Found = false;
+
+            //Boolean variable to record if data is OK
+            Boolean OK = true;
+
+            //create test data
+            Int32 staffNo = 2;
+
+            //Invoke the method
+            Found = staffNumber.Find(staffNo);
+
+            //Check the staff number
+            if (staffNumber.staffAddress != "Mangrove 1")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffMoNumberFound()
+        {
+            clsStaff staffNumber = new clsStaff();
+
+            //Boolean to store the result
+            Boolean Found = false;
+
+            //Boolean variable to record if data is OK
+            Boolean OK = true;
+
+            //create test data
+            Int32 staffNo = 2;
+
+            //Invoke the method
+            Found = staffNumber.Find(staffNo);
+
+            //Check the staff number
+            if (staffNumber.staffMoNumber != 7845123456)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffRoleFound()
+        {
+            clsStaff staffNumber = new clsStaff();
+
+            //Boolean to store the result
+            Boolean Found = false;
+
+            //Boolean variable to record if data is OK
+            Boolean OK = true;
+
+            //create test data
+            Int32 staffNo = 2;
+
+            //Invoke the method
+            Found = staffNumber.Find(staffNo);
+
+            //Check the staff number
+            if (staffNumber.staffRole != "Manager")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffBirthDateFound()
+        {
+            clsStaff staffNumber = new clsStaff();
+
+            //Boolean to store the result
+            Boolean Found = false;
+
+            //Boolean variable to record if data is OK
+            Boolean OK = true;
+
+            //create test data
+            Int32 staffNo = 2;
+
+            //Invoke the method
+            Found = staffNumber.Find(staffNo);
+
+            //Check the staff number
+            if (staffNumber.staffBirthDate != Convert.ToDateTime("18/08/1998"))
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffActiveFound()
+        {
+            clsStaff staffNumber = new clsStaff();
+
+            //Boolean to store the result
+            Boolean Found = false;
+
+            //Boolean variable to record if data is OK
+            Boolean OK = true;
+
+            //create test data
+            Int32 staffNo = 2;
+
+            //Invoke the method
+            Found = staffNumber.Find(staffNo);
+
+            //Check the staff number
+            if (staffNumber.staffActive != true)
             {
                 OK = false;
             }
