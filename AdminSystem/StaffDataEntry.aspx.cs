@@ -19,13 +19,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStaff AnStaffNo = new clsStaff();
 
         //Capture the name
-        AnStaffNo.staffName = txtStaffName.Text;
+        string staffName = txtStaffName.Text;
+        string staffAddress = txtStaffAddress.Text;
+        string staffMoNumber = txtStaffMoNumber.Text;
+        string staffRole = txtStaffRole.Text;
+        string staffBirthDate = txtStaffBirthDate.Text;
 
-        //Store the name in the session
-        Session["AnStaffNo"] = AnStaffNo;
+        string Error = "";
+        Error = AnStaffNo.Valid(staffName, staffAddress, staffMoNumber, staffRole, staffBirthDate);
 
-        //Navigate to the viewer page
-        Response.Redirect("StaffViewer.aspx");
+        if (Error == "")
+        {
+            AnStaffNo.staffName = staffName;
+            AnStaffNo.staffAddress = staffAddress;
+            AnStaffNo.staffMoNumber = staffMoNumber;
+            AnStaffNo.staffRole = staffRole;
+            AnStaffNo.staffBirthDate = Convert.ToDateTime(staffBirthDate);
+
+            Session["AnStaffNo"] = AnStaffNo;
+
+            Response.Write("StaffViewwer.aspx");
+        }
+
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

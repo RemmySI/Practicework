@@ -61,8 +61,8 @@ namespace ClassLibrary
             }
         }
 
-        private decimal mStaffMoNumber;
-        public decimal staffMoNumber
+        private string mStaffMoNumber;
+        public string staffMoNumber
         {
             get
             {
@@ -122,7 +122,7 @@ namespace ClassLibrary
                 mStaffAddress = Convert.ToString(DB.DataTable.Rows[0]["staffAddress"]);
                 mStaffActive = Convert.ToBoolean(DB.DataTable.Rows[0]["staffActive"]);
                 mStaffBirthDate = Convert.ToDateTime(DB.DataTable.Rows[0]["staffBirthDate"]);
-                mStaffMoNumber = Convert.ToDecimal(DB.DataTable.Rows[0]["staffMoNumber"]);
+                mStaffMoNumber = Convert.ToString(DB.DataTable.Rows[0]["staffMoNumber"]);
                 mStaffName = Convert.ToString(DB.DataTable.Rows[0]["staffName"]);
                 mStaffRole = Convert.ToString(DB.DataTable.Rows[0]["staffRole"]);
 
@@ -139,7 +139,7 @@ namespace ClassLibrary
         }
 
         //Validation method
-        public string Valid (string staffName, string staffAddress, string staffRole, string staffBirthDate)
+        public string Valid (string staffName, string staffAddress, string staffRole, string staffMoNumber, string staffBirthDate)
         {
             String Error = "";
 
@@ -171,6 +171,16 @@ namespace ClassLibrary
             }
 
             if (staffRole.Length > 50)
+            {
+                Error = Error + "Staff role must be less than 50 characters : ";
+            }
+
+            if (staffMoNumber.Length == 0)
+            {
+                Error = Error + "Staff mobile number may not be blank : ";
+            }
+
+            if (staffMoNumber.Length > 50)
             {
                 Error = Error + "Staff role must be less than 50 characters : ";
             }
