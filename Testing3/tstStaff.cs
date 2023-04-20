@@ -597,8 +597,69 @@ namespace Testing3
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate.AddYears(-100);
+            TestDate = TestDate.AddYears(-100);
             string StaffBirthDate = TestDate.ToString();
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffBirthDateMinLessOne()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-1);
+            string StaffBirthDate = TestDate.ToString();
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffBirthDateMin()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string StaffBirthDate = TestDate.ToString();
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffBirthDateMinPlusOne()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(1);
+            string StaffBirthDate = TestDate.ToString();
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StafBirthDateExtremeMax()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string StaffBirthDate = TestDate.ToString();
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffBirthDateInvalidData()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            string StaffBirthDate = "This is not a date!";
             Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
