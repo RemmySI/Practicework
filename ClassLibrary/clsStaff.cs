@@ -145,28 +145,57 @@ namespace ClassLibrary
 
             DateTime DateTemp;
 
-            if (staffName.Length == 0 | staffAddress.Length == 0 | staffRole.Length == 0)
+            if (staffName.Length == 0)
             {
-                Error = Error + "This box may not be blank : ";
+                Error = Error + "Staff name may not be blank : ";
             }
 
-            if (staffName.Length > 50 | staffAddress.Length > 50 | staffRole.Length > 50)
+            if (staffAddress.Length == 0)
             {
-                Error = Error + "This box must be less than 50 characters : ";
+                Error = Error + "Staff address may not be blank : ";
             }
 
-            DateTemp = Convert.ToDateTime(staffBirthDate);
-            
-            if (DateTemp < DateTime.Now.Date)
+            if (staffRole.Length == 0)
             {
-                Error = Error + "The date cannot be in the past : ";
+                Error = Error + "Staff role may not be blank : ";
             }
 
-            if (DateTemp > DateTime.Now.Date)
+            if (staffName.Length > 50)
             {
-                Error = Error + "The date cannot be in the future : ";
+                Error = Error + "Staff name must be less than 50 characters : ";
             }
-            
+
+            if (staffAddress.Length > 50)
+            {
+                Error = Error + "Staff address must be less than 50 characters : ";
+            }
+
+            if (staffRole.Length > 50)
+            {
+                Error = Error + "Staff role must be less than 50 characters : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(staffBirthDate);
+
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+
             return Error;
         }
     }
