@@ -13,6 +13,7 @@ namespace Testing3
         string StaffName = "Gabrielius Vaitkus";
         string StaffAddress = "15 bridge meadow";
         string StaffRole = "Director";
+        string StaffMoNumber = "7845123466";
         string StaffBirthDate = DateTime.Now.Date.ToString();
         
         [TestMethod]
@@ -64,7 +65,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
 
             //Test data creation
-            decimal TestData = 7415687415;
+            String TestData = "7415687415";
 
             //Assigning data to the property
             staffNumber.staffMoNumber = TestData;
@@ -241,7 +242,7 @@ namespace Testing3
             Found = staffNumber.Find(staffNo);
 
             //Check the staff number
-            if (staffNumber.staffMoNumber != 7845123456)
+            if (staffNumber.staffMoNumber != "7845123456")
             {
                 OK = false;
             }
@@ -336,7 +337,7 @@ namespace Testing3
         {
             clsStaff staffNumber = new clsStaff();
             String Error = "";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
         }
 
         [TestMethod]
@@ -345,7 +346,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffName = "";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");           
         }
 
@@ -355,7 +356,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffName = "a";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -365,7 +366,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffName = "aa";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -375,7 +376,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -385,7 +386,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -395,7 +396,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffName = "aaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -405,7 +406,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -416,7 +417,7 @@ namespace Testing3
             String Error = "";
             string StaffName = "";
             StaffName = StaffName.PadRight(500, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -426,7 +427,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffAddress = "";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -436,7 +437,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffAddress = "a";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -446,7 +447,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffAddress = "aa";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -457,7 +458,7 @@ namespace Testing3
             String Error = "";
             string StaffAddress = "";
             StaffAddress = StaffAddress.PadRight(49, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -468,7 +469,7 @@ namespace Testing3
             String Error = "";
             string StaffAddress = "";
             StaffAddress = StaffAddress.PadRight(50, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -479,7 +480,7 @@ namespace Testing3
             String Error = "";
             string StaffAddress = "";
             StaffAddress = StaffAddress.PadRight(51, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -490,7 +491,7 @@ namespace Testing3
             String Error = "";
             string StaffAddress = "";
             StaffAddress = StaffAddress.PadRight(25, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -501,7 +502,7 @@ namespace Testing3
             String Error = "";
             string StaffAddress = "";
             StaffAddress = StaffAddress.PadRight(500, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -511,7 +512,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffRole = "";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -521,7 +522,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffRole = "a";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -531,7 +532,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffRole = "aa";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -542,7 +543,7 @@ namespace Testing3
             String Error = "";
             string StaffRole = "";
             StaffRole = StaffRole.PadRight(25, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -553,7 +554,7 @@ namespace Testing3
             String Error = "";
             string StaffRole = "";
             StaffRole = StaffRole.PadRight(50, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -564,7 +565,7 @@ namespace Testing3
             String Error = "";
             string StaffRole = "";
             StaffRole = StaffRole.PadRight(49, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -575,7 +576,7 @@ namespace Testing3
             String Error = "";
             string StaffRole = "";
             StaffRole = StaffRole.PadRight(51, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -586,7 +587,91 @@ namespace Testing3
             String Error = "";
             string StaffRole = "";
             StaffRole = StaffRole.PadRight(500, 'a');
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffMoNumberMinLessOne()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            string StaffMoNumber = "";
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffMoNumberMin()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            string StaffMoNumber = "1";
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffMoNumberMinPlusOne()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            string StaffMoNumber = "11";
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffMoNumberMid()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            string StaffMoNumber = "111";
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffMoNumberMaxLessOne()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            string StaffMoNumber = "";
+            StaffMoNumber = StaffMoNumber.PadRight(49, '1');
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffMoNumberMax()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            string StaffMoNumber = "";
+            StaffMoNumber = StaffMoNumber.PadRight(50, '1');
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffMoNumberMaxPlusOne()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            string StaffMoNumber = "";
+            StaffMoNumber = StaffMoNumber.PadRight(51, '1');
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffMoNumberExtremeMax()
+        {
+            clsStaff staffNumber = new clsStaff();
+            String Error = "";
+            string StaffMoNumber = "";
+            StaffMoNumber = StaffMoNumber.PadRight(500, '1');
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -599,7 +684,7 @@ namespace Testing3
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
             string StaffBirthDate = TestDate.ToString();
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -612,7 +697,7 @@ namespace Testing3
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-1);
             string StaffBirthDate = TestDate.ToString();
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -624,7 +709,7 @@ namespace Testing3
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string StaffBirthDate = TestDate.ToString();
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -637,7 +722,7 @@ namespace Testing3
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(1);
             string StaffBirthDate = TestDate.ToString();
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -650,7 +735,7 @@ namespace Testing3
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
             string StaffBirthDate = TestDate.ToString();
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -660,7 +745,7 @@ namespace Testing3
             clsStaff staffNumber = new clsStaff();
             String Error = "";
             string StaffBirthDate = "This is not a date!";
-            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffBirthDate);
+            Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
             Assert.AreNotEqual(Error, "");
         }
     }
