@@ -4,8 +4,8 @@ using System;
 
 
 namespace Testing3
-{ 
-  
+{
+
     [TestClass]
     public class TstStaff
     {
@@ -15,7 +15,7 @@ namespace Testing3
         string StaffRole = "Director";
         string StaffMoNumber = "7845123466";
         string StaffBirthDate = DateTime.Now.Date.ToString();
-        
+
         [TestMethod]
         public void StaffNumberOK()
         {
@@ -347,7 +347,7 @@ namespace Testing3
             String Error = "";
             string StaffName = "";
             Error = staffNumber.Valid(StaffName, StaffAddress, StaffRole, StaffMoNumber, StaffBirthDate);
-            Assert.AreNotEqual(Error, "");           
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
