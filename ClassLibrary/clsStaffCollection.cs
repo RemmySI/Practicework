@@ -6,7 +6,7 @@ namespace ClassLibrary
     public class clsStaffCollection
     {
         List<clsStaff> mStaffList = new List<clsStaff>();
-        List<clsStaff> mThisStaff = new List<clsStaff>();
+        clsStaff mThisStaff = new clsStaff();
 
         public clsStaffCollection()
         {
@@ -22,7 +22,7 @@ namespace ClassLibrary
                 AnStaff.staffNo = Convert.ToInt32(DB.DataTable.Rows[Index]["staffNo"]);
                 AnStaff.staffAddress = Convert.ToString(DB.DataTable.Rows[Index]["staffAddress"]);
                 AnStaff.staffActive = Convert.ToBoolean(DB.DataTable.Rows[Index]["staffActive"]);
-                AnStaff.staffBirthDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["staffBirthDate"]);
+                AnStaff.staffDateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["staffDateAdded"]);
                 AnStaff.staffMoNumber = Convert.ToString(DB.DataTable.Rows[Index]["staffMoNumber"]);
                 AnStaff.staffName = Convert.ToString(DB.DataTable.Rows[Index]["staffName"]);
                 AnStaff.staffRole = Convert.ToString(DB.DataTable.Rows[Index]["staffRole"]);
@@ -31,7 +31,7 @@ namespace ClassLibrary
 
                 Index++;
             }
-            
+
         }
         public List<clsStaff> StaffList
         {
@@ -59,6 +59,48 @@ namespace ClassLibrary
             }
         }
 
-        public clsStaff ThisStaff { get; set; }
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                return mThisStaff;
+            }
+
+            set
+            {
+                mThisStaff = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@staffName", mThisStaff.staffName);
+            DB.AddParameter("@staffAddress", mThisStaff.staffAddress);
+            DB.AddParameter("@staffMoNumber", mThisStaff.staffMoNumber);
+            DB.AddParameter("@staffRole", mThisStaff.staffRole);
+            DB.AddParameter("@staffDateAdded", mThisStaff.staffDateAdded);
+            DB.AddParameter("@staffActive", mThisStaff.staffActive);
+            return DB.Execute("sproc_tblStaff_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@staffName", mThisStaff.staffName);
+            DB.AddParameter("@staffAddress", mThisStaff.staffAddress);
+            DB.AddParameter("@staffMoNumber", mThisStaff.staffMoNumber);
+            DB.AddParameter("@staffRole", mThisStaff.staffRole);
+            DB.AddParameter("@staffDateAdded", mThisStaff.staffDateAdded);
+            DB.AddParameter("@staffActive", mThisStaff.staffActive);
+            DB.Execute("sproc_tblStaff_Update");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@staffNo", mThisStaff.staffNo);
+            DB.Execute("sproc_tblStaff_Delete");
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace Testing3
             TestItem.staffAddress = "Mangrove 1";
             TestItem.staffMoNumber = "7845123456";
             TestItem.staffRole = "Manager";
-            TestItem.staffBirthDate = DateTime.Parse("18/08/1998");
+            TestItem.staffDateAdded = DateTime.Parse("18/08/1998");
             TestItem.staffActive = true;
 
             TestList.Add(TestItem);
@@ -44,7 +44,7 @@ namespace Testing3
             TestAddress.staffAddress = "Mangrove 1";
             TestAddress.staffMoNumber = "7845123456";
             TestAddress.staffRole = "Manager";
-            TestAddress.staffBirthDate = DateTime.Parse("18/08/1998");
+            TestAddress.staffDateAdded = DateTime.Parse("18/08/1998");
             TestAddress.staffActive = true;
 
             AllStaff.ThisStaff = TestAddress;
@@ -62,12 +62,84 @@ namespace Testing3
             TestItem.staffAddress = "Mangrove 1";
             TestItem.staffMoNumber = "7845123456";
             TestItem.staffRole = "Manager";
-            TestItem.staffBirthDate = DateTime.Parse("18/08/1998");
+            TestItem.staffDateAdded = DateTime.Parse("18/08/1998");
             TestItem.staffActive = true;
 
             TestList.Add(TestItem);
             AllStaff.StaffList = TestList;
             Assert.AreEqual(AllStaff.Count, TestList.Count);
+        }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.staffNo = 2;
+            TestItem.staffName = "John Smith";
+            TestItem.staffAddress = "Mangrove 1";
+            TestItem.staffMoNumber = "7845123456";
+            TestItem.staffRole = "Manager";
+            TestItem.staffDateAdded = DateTime.Parse("18/08/1998");
+            TestItem.staffActive = true;
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            TestItem.staffNo = PrimaryKey;
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+        }
+
+        public void UpdateMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.staffName = "John Smith";
+            TestItem.staffAddress = "Mangrove 1";
+            TestItem.staffMoNumber = "7845123456";
+            TestItem.staffRole = "Manager";
+            TestItem.staffDateAdded = DateTime.Parse("18/08/1998");
+            TestItem.staffActive = true;
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            TestItem.staffNo = PrimaryKey;
+            TestItem.staffName = "Luke Skywalker";
+            TestItem.staffAddress = "Death Star 15b";
+            TestItem.staffMoNumber = "8185153456";
+            TestItem.staffRole = "Leader";
+            TestItem.staffDateAdded = DateTime.Parse("15/02/1990");
+            TestItem.staffActive = false;
+            AllStaff.ThisStaff = TestItem;
+            AllStaff.Update();
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.staffNo = 2;
+            TestItem.staffName = "John Smith";
+            TestItem.staffAddress = "Mangrove 1";
+            TestItem.staffMoNumber = "7845123456";
+            TestItem.staffRole = "Manager";
+            TestItem.staffDateAdded = DateTime.Parse("18/08/1998");
+            TestItem.staffActive = true;
+            AllStaff.ThisStaff = TestItem;
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            TestItem.staffNo = PrimaryKey;
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            AllStaff.Delete();
+            Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
         }
     }
 }
