@@ -43,6 +43,7 @@ namespace ClassLibrary
             String Error = "";
             DateTime DateTemp;
             if (firstName.Length == 0)
+
             {
                 Error = Error + "The first name may not be blank :";
             }
@@ -51,14 +52,59 @@ namespace ClassLibrary
             {
                 Error = Error + "First names must be less then 50 characters : ";
             }
-            DateTemp = Convert.ToDateTime(dateAdded);
-            if (DateTemp < DateTime.Now.Date)
+
+            if (lastName.Length == 0)
+
             {
-                Error = Error + "The date cannot be past in the past: ";
+                Error = Error + "The Last name may not be blank :";
             }
-            if (DateTemp > DateTime.Now.Date)
+            //First Name must be less than 50 characater, can include string variable with middle name
+            if (lastName.Length > 50)
             {
-                Error = Error + "The date cannot be in the future";
+                Error = Error + "Last names must be less then 50 characters : ";
+            }
+
+            if (phoneNo.Length == 0)
+
+            {
+                Error = Error + "The Phone number may not be blank :";
+            }
+            //First Name must be less than 50 characater, can include string variable with middle name
+            if (phoneNo.Length > 50)
+            {
+                Error = Error + "Phone number must be less then 50 characters : ";
+            }
+
+            if (email.Length == 0)
+
+            {
+                Error = Error + "The Email may not be blank :";
+            }
+            //First Name must be less than 50 characater, can include string variable with middle name
+            if (email.Length > 50)
+            {
+                Error = Error + "Email must be less then 50 characters : ";
+            }
+
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateAdded);
+
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
             }
             return Error;
         }
