@@ -8,8 +8,30 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StaffNo;
     protected void Page_Load(object sender, EventArgs e)
     {
+        StaffNo = Convert.ToInt32(Session["staffNo"]);
+        if (IsPostBack == false)
+        {
+            if (StaffNo != -1)
+            {
+                DisplayStaff();
+            }
+        }
+    }
+
+    private void DisplayStaff()
+    {
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        StaffBook.ThisStaff.Find(StaffNo);
+        txtStaffAddress.Text = StaffBook.ThisStaff.staffAddress;
+        txtStaffDateAdded.Text = StaffBook.ThisStaff.staffDateAdded.ToString();
+        txtStaffMoNumber.Text = StaffBook.ThisStaff.staffMoNumber;
+        txtStaffName.Text = StaffBook.ThisStaff.staffName;
+        txtStaffNo.Text = StaffBook.ThisStaff.staffNo.ToString();
+        txtStaffRole.Text = StaffBook.ThisStaff.staffRole;
+        chkActive.Checked = StaffBook.ThisStaff.staffActive;
 
     }
 
@@ -23,22 +45,40 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string staffAddress = txtStaffAddress.Text;
         string staffMoNumber = txtStaffMoNumber.Text;
         string staffRole = txtStaffRole.Text;
-        string staffBirthDate = txtStaffBirthDate.Text;
+        string staffDateAdded = txtStaffDateAdded.Text;
 
         string Error = "";
-        Error = AnStaffNo.Valid(staffName, staffAddress, staffMoNumber, staffRole, staffBirthDate);
+        Error = AnStaffNo.Valid(staffName, staffAddress, staffMoNumber, staffRole, staffDateAdded);
 
         if (Error == "")
         {
+            AnStaffNo.staffNo = StaffNo;
             AnStaffNo.staffName = staffName;
             AnStaffNo.staffAddress = staffAddress;
             AnStaffNo.staffMoNumber = staffMoNumber;
             AnStaffNo.staffRole = staffRole;
-            AnStaffNo.staffBirthDate = Convert.ToDateTime(staffBirthDate);
+            AnStaffNo.staffDateAdded = Convert.ToDateTime(staffDateAdded);
 
-            Session["AnStaffNo"] = AnStaffNo;
+            clsStaffCollection StaffList = new clsStaffCollection();
+            StaffList.ThisStaff = AnStaffNo;
+            StaffList.Add();
 
-            Response.Write("StaffViewwer.aspx");
+            Response.Redirect("StaffList.aspx");
+
+            if (StaffNo == -1)
+            {
+                StaffList.ThisStaff = AnStaffNo;
+                StaffList.Add();
+            }
+
+            else
+            {
+                StaffList.ThisStaff.Find(StaffNo);
+                StaffList.ThisStaff = AnStaffNo;
+                StaffList.Update();
+            }
+
+            Response.Redirect("StaffList.aspx");
         }
 
         else
@@ -69,7 +109,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             //Display the values of the properties in the form
             txtStaffAddress.Text = AnStaffNo.staffAddress;
-            txtStaffBirthDate.Text = AnStaffNo.staffBirthDate.ToString();
+            txtStaffDateAdded.Text = AnStaffNo.staffDateAdded.ToString();
             txtStaffMoNumber.Text = AnStaffNo.staffMoNumber.ToString();
             txtStaffName.Text = AnStaffNo.staffName;
             txtStaffNo.Text = AnStaffNo.staffNo.ToString();

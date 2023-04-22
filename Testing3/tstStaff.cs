@@ -100,10 +100,10 @@ namespace Testing3
             DateTime TestData = DateTime.Now.Date;
 
             //Assign data to the property
-            staffNumber.staffBirthDate = TestData;
+            staffNumber.staffDateAdded = TestData;
 
             //Compare the two value
-            Assert.AreEqual(staffNumber.staffBirthDate,
+            Assert.AreEqual(staffNumber.staffDateAdded,
                             TestData);
         }
 
@@ -296,7 +296,7 @@ namespace Testing3
             Found = staffNumber.Find(staffNo);
 
             //Check the staff number
-            if (staffNumber.staffBirthDate != Convert.ToDateTime("18/08/1998"))
+            if (staffNumber.staffDateAdded != Convert.ToDateTime("18/08/1998"))
             {
                 OK = false;
             }

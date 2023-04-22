@@ -90,7 +90,7 @@ namespace ClassLibrary
         }
 
         private DateTime mStaffBirthDate;
-        public DateTime staffBirthDate
+        public DateTime staffDateAdded
         {
             get
             {
@@ -121,7 +121,7 @@ namespace ClassLibrary
                 mStaffNo = Convert.ToInt32(DB.DataTable.Rows[0]["staffNo"]);
                 mStaffAddress = Convert.ToString(DB.DataTable.Rows[0]["staffAddress"]);
                 mStaffActive = Convert.ToBoolean(DB.DataTable.Rows[0]["staffActive"]);
-                mStaffBirthDate = Convert.ToDateTime(DB.DataTable.Rows[0]["staffBirthDate"]);
+                mStaffBirthDate = Convert.ToDateTime(DB.DataTable.Rows[0]["staffDateAdded"]);
                 mStaffMoNumber = Convert.ToString(DB.DataTable.Rows[0]["staffMoNumber"]);
                 mStaffName = Convert.ToString(DB.DataTable.Rows[0]["staffName"]);
                 mStaffRole = Convert.ToString(DB.DataTable.Rows[0]["staffRole"]);
