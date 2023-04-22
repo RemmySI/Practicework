@@ -123,5 +123,74 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string supplierName, string supplierContactNo, string supplierEmail, string supplierAddress, string dateRegistered)
+        {
+            String Error = "";
+
+            DateTime DateTemp;
+
+            if (supplierName.Length == 0)
+            {
+                Error = Error + "Supplier Name may not be blank : ";
+            }
+
+            if (supplierContactNo.Length == 0)
+            {
+                Error = Error + "Supplier Contact Number may not be blank : ";
+            }
+
+            if (supplierEmail.Length == 0)
+            {
+                Error = Error + "Supplier Email may not be blank : ";
+            }
+
+            if (supplierName.Length > 50)
+            {
+                Error = Error + "Supplier Name must be less than 50 characters : ";
+            }
+
+            if (supplierAddress.Length > 50)
+            {
+                Error = Error + "Supplier Address must be less than 50 characters : ";
+            }
+
+            if (supplierContactNo.Length > 50)
+            {
+                Error = Error + "Supplier Contact Number must be less than 50 characters : ";
+            }
+
+            if (supplierAddress.Length == 0)
+            {
+                Error = Error + "Supplier Address may not be blank : ";
+            }
+
+            if (supplierEmail.Length > 50)
+            {
+                Error = Error + "Supplier Email must be less than 50 characters : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateRegistered);
+
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+
+            return Error;
+        }
     }
 }
