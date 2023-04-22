@@ -190,7 +190,7 @@ namespace Testing5
             {
                 OK = false;
             }
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
         [TestMethod]
@@ -304,7 +304,7 @@ namespace Testing5
             String Error = "";
             string supplierAddress = "a";
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -314,7 +314,7 @@ namespace Testing5
             String Error = "";
             string supplierAddress = "aa";
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -347,7 +347,7 @@ namespace Testing5
             string supplierAddress = "";
             supplierAddress = supplierAddress.PadRight(51, 'a');
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -369,7 +369,7 @@ namespace Testing5
             string supplierAddress = "";
             supplierAddress = supplierAddress.PadRight(500, 'a');
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -389,7 +389,7 @@ namespace Testing5
             String Error = "";
             string supplierEmail = "a";
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -399,7 +399,7 @@ namespace Testing5
             String Error = "";
             string supplierEmail = "aa";
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -443,7 +443,7 @@ namespace Testing5
             string supplierEmail = "";
             supplierEmail = supplierEmail.PadRight(51, 'a');
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -454,7 +454,7 @@ namespace Testing5
             string supplierEmail = "";
             supplierEmail = supplierEmail.PadRight(500, 'a');
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -474,7 +474,7 @@ namespace Testing5
             String Error = "";
             string supplierContactNo = "1";
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -484,7 +484,7 @@ namespace Testing5
             String Error = "";
             string supplierContactNo = "11";
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -494,7 +494,7 @@ namespace Testing5
             String Error = "";
             string supplierContactNo = "111";
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -527,7 +527,7 @@ namespace Testing5
             string supplierContactNo = "";
             supplierContactNo = supplierContactNo.PadRight(51, '1');
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -538,7 +538,89 @@ namespace Testing5
             string supplierContactNo = "";
             supplierContactNo = supplierContactNo.PadRight(500, '1');
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        public void DateRegisteredExtremeMin()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            String Error = "";
+            //a variable to store test date data
+            DateTime TestDate;
+            //date is todays date
+            TestDate = DateTime.Now.Date;
+            //The date minus 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert date to a string
+            string dateRegistered = TestDate.ToString();
+            //invoke method
+            Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void DateRegisteredMinLessOne()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string dateRegistered = TestDate.ToString();
+            Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
+            Assert.AreNotEqual(Error, "");
+
+
+        }
+        [TestMethod]
+        public void DateRegisteredMin()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string dateRegistered = TestDate.ToString();
+            Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
             Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void DateRegisteredMinPlusOne()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string dateRegistered = TestDate.ToString();
+            Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateRegisteredExtremeMax()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string dateRegistered = TestDate.ToString();
+            Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateRegisteredInvalidData()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            String Error = "";
+            string dateRegistered = "This is not a date!";
+            Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
