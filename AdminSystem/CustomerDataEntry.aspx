@@ -27,7 +27,7 @@
         </p>
         <asp:Label ID="lblContactNumber" runat="server" Text="Contact Number"></asp:Label>
 &nbsp;&nbsp;
-        <asp:TextBox ID="txtContactNumber" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtContactNumber" runat="server" OnTextChanged="txtCPhoneNo_TextChanged"></asp:TextBox>
         <p>
             <asp:Label ID="lblDateAdded" runat="server" Text="Date Added"></asp:Label>
 &nbsp;
