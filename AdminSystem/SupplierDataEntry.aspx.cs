@@ -15,17 +15,36 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //New instance of supplierNo
-        clsSupplier ASupplierNo = new clsSupplier();
+        //New instance of clsSupplier
+        clsSupplier ASupplier = new clsSupplier();
 
         //Capture the name
-        ASupplierNo.supplierName = txtSupplierName.Text;
+        string supplierName = txtSupplierName.Text;
+        string supplierContactNo = txtSupplierContactNo.Text;
+        string supplierEmail = txtSupplierEmail.Text;
+        string supplierAddress = txtSupplierAddress.Text;
+        string dateRegistered = txtDateRegistered.Text;
 
-        //Store the name in the session
-        Session["ASupplierNo"] = ASupplierNo;
+        string Error = "";
+        Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
 
-        //Navigate to the viewer page
-        Response.Redirect("SupplierViewer.aspx");
+        if (Error == "")
+        {
+            ASupplier.supplierName = supplierName;
+            ASupplier.supplierContactNo = supplierContactNo;
+            ASupplier.supplierEmail = supplierEmail;
+            ASupplier.supplierAddress = supplierAddress;
+            ASupplier.dateRegistered = Convert.ToDateTime(dateRegistered);
+
+            Session["ASupplier"] = ASupplier;
+
+            Response.Write("SupplierViewwer.aspx");
+        }
+
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
