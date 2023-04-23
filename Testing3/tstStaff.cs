@@ -676,7 +676,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void StaffBirthDateExtremeMin()
+        public void StaffDateAddedExtremeMin()
         {
             clsStaff staffNumber = new clsStaff();
             String Error = "";
@@ -689,7 +689,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void StaffBirthDateMinLessOne()
+        public void StaffDateAddedMinLessOne()
         {
             clsStaff staffNumber = new clsStaff();
             String Error = "";
@@ -702,7 +702,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void StaffBirthDateMin()
+        public void StaffDateAddedMin()
         {
             clsStaff staffNumber = new clsStaff();
             String Error = "";
@@ -714,7 +714,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void StaffBirthDateMinPlusOne()
+        public void StaffDateAddedMinPlusOne()
         {
             clsStaff staffNumber = new clsStaff();
             String Error = "";
@@ -727,7 +727,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void StafBirthDateExtremeMax()
+        public void StafDateAddedExtremeMax()
         {
             clsStaff staffNumber = new clsStaff();
             String Error = "";
@@ -740,7 +740,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void StaffBirthDateInvalidData()
+        public void StaffDateAddedInvalidData()
         {
             clsStaff staffNumber = new clsStaff();
             String Error = "";
