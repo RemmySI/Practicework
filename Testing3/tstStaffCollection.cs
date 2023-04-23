@@ -141,5 +141,41 @@ namespace Testing3
             Assert.IsFalse(Found);
 
         }
+
+        [TestMethod]
+        public void ReportByStaffRoleMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaffCollection FilteredRoles = new clsStaffCollection();
+            FilteredRoles.ReportByStaffRole("");
+            Assert.AreEqual(AllStaff.Count, FilteredRoles.Count);
+        }
+
+        [TestMethod]
+        public void ReportByStaffRoleTestDataFound()
+        {
+            clsStaffCollection FilteredRoles = new clsStaffCollection();
+            Boolean OK = true;
+            FilteredRoles.ReportByStaffRole("Manager");
+            if (FilteredRoles.Count == 2)
+            {
+                if (FilteredRoles.StaffList[0].staffNo != 10)
+                {
+                    OK = false;
+                }
+
+                if (FilteredRoles.StaffList[1].staffNo != 11)
+                {
+                    OK = false;
+                }
+            }
+
+            else
+            {
+                OK = false;
+            }
+
+            Assert.IsFalse(OK);
+        }
     }
 }
