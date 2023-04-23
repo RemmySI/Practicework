@@ -69,5 +69,77 @@ namespace Testing5
             AllSupplier.SupplierList = TestList;
             Assert.AreEqual(AllSupplier.Count, TestList.Count);
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsSupplierCollection AllSupplier = new clsSupplierCollection();
+            clsSupplier TestItem = new clsSupplier();
+            Int32 PrimaryKey = 0;
+            TestItem.supplierNo = 1;
+            TestItem.supplierName = "alibaba";
+            TestItem.supplierContactNo = "07856162654";
+            TestItem.supplierEmail = "alibaba54@gmail.com";
+            TestItem.supplierAddress = "24 shipton road, NN10 9BE";
+            TestItem.dateRegistered = DateTime.Parse("20/02/2022");
+            TestItem.active = true;
+            AllSupplier.ThisSupplier = TestItem;
+            PrimaryKey = AllSupplier.Add();
+            TestItem.supplierNo = PrimaryKey;
+            AllSupplier.ThisSupplier.Find(PrimaryKey);
+            Assert.AreEqual(AllSupplier.ThisSupplier, TestItem);
+        }
+
+        public void UpdateMethodOK()
+        {
+            clsSupplierCollection AllSupplier = new clsSupplierCollection();
+            clsSupplier TestItem = new clsSupplier();
+            Int32 PrimaryKey = 0;
+            TestItem.supplierName = "alibaba";
+            TestItem.supplierContactNo = "07856162654";
+            TestItem.supplierEmail = "alibaba54@gmail.com";
+            TestItem.supplierAddress = "24 shipton road, NN10 9BE";
+            TestItem.dateRegistered = DateTime.Parse("20/02/2022");
+            TestItem.active = true;
+            AllSupplier.ThisSupplier = TestItem;
+            PrimaryKey = AllSupplier.Add();
+            TestItem.supplierNo = PrimaryKey;
+            TestItem.supplierName = "SportsDirect";
+            TestItem.supplierContactNo = "8185153456";
+            TestItem.supplierEmail = "8185153456";
+            TestItem.supplierAddress = "53 clemence way";
+            TestItem.dateRegistered = DateTime.Parse("15/02/2023");
+            TestItem.active = false;
+            AllSupplier.ThisSupplier = TestItem;
+            AllSupplier.Update();
+            AllSupplier.ThisSupplier.Find(PrimaryKey);
+            Assert.AreEqual(AllSupplier.ThisSupplier, TestItem);
+
+
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsSupplierCollection AllSupplier = new clsSupplierCollection();
+            clsSupplier TestItem = new clsSupplier();
+            Int32 PrimaryKey = 0;
+            TestItem.supplierNo = 1;
+            TestItem.supplierName = "alibaba";
+            TestItem.supplierContactNo = "07856162654";
+            TestItem.supplierEmail = "alibaba54@gmail.com";
+            TestItem.supplierAddress = "24 shipton road, NN10 9BE";
+            TestItem.dateRegistered = DateTime.Parse("20/02/2022");
+            TestItem.active = true;
+            AllSupplier.ThisSupplier = TestItem;
+            AllSupplier.ThisSupplier = TestItem;
+            PrimaryKey = AllSupplier.Add();
+            TestItem.supplierNo = PrimaryKey;
+            AllSupplier.ThisSupplier.Find(PrimaryKey);
+            AllSupplier.Delete();
+            Boolean Found = AllSupplier.ThisSupplier.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace ClassLibrary
     public class clsSupplierCollection
     {
         List<clsSupplier> mSupplierList = new List<clsSupplier>();
-        List<clsSupplier> mThisSupplier = new List<clsSupplier>();
+        clsSupplier mThisSupplier = new clsSupplier();
 
         public clsSupplierCollection()
         {
@@ -59,6 +59,49 @@ namespace ClassLibrary
             }
         }
 
-        public clsSupplier ThisSupplier { get; set; }
+        public clsSupplier ThisSupplier
+        {
+            get
+            {
+                return mThisSupplier;
+            }
+
+            set
+            {
+                mThisSupplier = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@supplierName", mThisSupplier.supplierName);
+            DB.AddParameter("@supplierContactNo", mThisSupplier.supplierContactNo);
+            DB.AddParameter("@supplierEmail", mThisSupplier.supplierEmail);
+            DB.AddParameter("@supplierAddress", mThisSupplier.supplierAddress);
+            DB.AddParameter("@dateRegistered", mThisSupplier.dateRegistered);
+            DB.AddParameter("@active", mThisSupplier.active);
+            return DB.Execute("sproc_tblSupplier_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@supplierName", mThisSupplier.supplierName);
+            DB.AddParameter("@supplierContactNo", mThisSupplier.supplierContactNo);
+            DB.AddParameter("@supplierEmail", mThisSupplier.supplierEmail);
+            DB.AddParameter("@supplierAddress", mThisSupplier.supplierAddress);
+            DB.AddParameter("@dateRegistered", mThisSupplier.dateRegistered);
+            DB.AddParameter("@active", mThisSupplier.active);
+            DB.Execute("sproc_tblSupplier_Update");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@supplierNo", mThisSupplier.supplierNo);
+            DB.Execute("sproc_tblSupplier_Delete");
+        }
+
     }
 }

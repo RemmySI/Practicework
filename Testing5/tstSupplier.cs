@@ -622,5 +622,6 @@ namespace Testing5
             Error = ASupplier.Valid(supplierName, supplierContactNo, supplierEmail, supplierAddress, dateRegistered);
             Assert.AreNotEqual(Error, "");
         }
+
     }
 }

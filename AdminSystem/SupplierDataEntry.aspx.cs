@@ -8,8 +8,31 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 supplierNo;
     protected void Page_Load(object sender, EventArgs e)
     {
+        supplierNo = Convert.ToInt32(Session["supplierNo"]);
+        if (IsPostBack == false)
+        {
+            if (supplierNo != -1)
+            {
+                DisplaySupplier();
+            }
+        }
+
+    }
+
+    private void DisplaySupplier()
+    {
+        clsSupplierCollection SupplierBook = new clsSupplierCollection();
+        SupplierBook.ThisSupplier.Find(supplierNo);
+        txtSupplierNo.Text = SupplierBook.ThisSupplier.supplierNo.ToString();
+        txtSupplierName.Text = SupplierBook.ThisSupplier.supplierName;
+        txtSupplierContactNo.Text = SupplierBook.ThisSupplier.supplierContactNo;
+        txtSupplierEmail.Text = SupplierBook.ThisSupplier.supplierEmail;
+        txtSupplierAddress.Text = SupplierBook.ThisSupplier.supplierAddress;
+        txtDateRegistered.Text = SupplierBook.ThisSupplier.dateRegistered.ToString();
+        chkActive.Checked = SupplierBook.ThisSupplier.active;
 
     }
 
@@ -30,15 +53,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Error == "")
         {
+            ASupplier.supplierNo = supplierNo;
             ASupplier.supplierName = supplierName;
             ASupplier.supplierContactNo = supplierContactNo;
             ASupplier.supplierEmail = supplierEmail;
             ASupplier.supplierAddress = supplierAddress;
             ASupplier.dateRegistered = Convert.ToDateTime(dateRegistered);
 
-            Session["ASupplier"] = ASupplier;
+            clsSupplierCollection SupplierList = new clsSupplierCollection();
+            SupplierList.ThisSupplier = ASupplier;
+            SupplierList.Add();
 
-            Response.Write("SupplierViewwer.aspx");
+            Response.Redirect("SupplierList.aspx");
+
+            if (supplierNo == -1)
+            {
+                SupplierList.ThisSupplier = ASupplier;
+                SupplierList.Add();
+            }
+
+            else
+            {
+                SupplierList.ThisSupplier.Find(supplierNo);
+                SupplierList.ThisSupplier = ASupplier;
+                SupplierList.Update();
+            }
+
+            Response.Redirect("SupplierList.aspx");
         }
 
         else
