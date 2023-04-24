@@ -190,7 +190,7 @@ namespace Testing4
             //invoke the method
             Found = AnStock.Find(CardNo);
             //check the property
-            if (AnStock.CardPrice != 9999)
+            if (AnStock.CardPrice != 975)
             {
                 OK = false;
             }
@@ -202,7 +202,7 @@ namespace Testing4
         public void TestCardTypeFound()
         {
             //create an instance of the class we want to create
-            clsStock AnAddress = new clsStock();
+            clsStock AnStock = new clsStock();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -210,9 +210,9 @@ namespace Testing4
             //create some test data to use with the method
             Int32 CardNo = 21;
             //invoke the method
-            Found = AnAddress.Find(CardNo);
+            Found = AnStock.Find(CardNo);
             //check the property
-            if (AnAddress.CardType != "Fire")
+            if (AnStock.CardType != "Fire")
             {
                 OK = false;
             }
